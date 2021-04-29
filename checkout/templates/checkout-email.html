@@ -1,0 +1,11 @@
+<div>
+    <p>Qebul eden: {{ order.reciever }}</p>
+    <p>Email: {{ order.email }}</p>
+    <p>Telefon: {{ order.phone }}</p>
+    {% for item in order.orderwish.all %}
+    <div style="display: flex;">
+     <p>Sifaris: {{item.product.short_title}} </p>
+     <p style="margin-left: 2em;">Miqdar: {{item.count}}</p>
+    </div>
+    {% endfor %}
+</div>

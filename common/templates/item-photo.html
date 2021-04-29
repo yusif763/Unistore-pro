@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="blog-item">
+    	<img src="{{blog.background.url}}" alt="Apple 3D Touch"/>
+      <div class="container">
+    		<br><br>
+
+	    	<div class="row">
+	    		<div class="col-sm-8 col-sm-offset-2">
+					<h1>{{blog.title}}</h1>
+	    			<p>{{ blog.description}}</p>
+
+		    		 <button class="btn btn-primary btn-sm facebook"> <i class="ion-social-facebook"></i> Share </button>
+		    		 <button class="btn btn-primary btn-sm twitter"> <i class="ion-social-twitter"></i> Retweet</button>
+		    		 <button class="btn btn-primary btn-sm googleplus"> <i class="ion-social-googleplus"></i> Plus </button>
+
+		    		 <hr>
+		    		 <div class="comments">
+		    		 	<h2 class="h3">What do you think? (#2)</h2>
+		    		 	<br>
+
+						 {% for comment in parent_comments %}
+		    		 	<h3>{{comment.full_name}}</h3>
+		    		 	<label>{{comment.created_at}}</label>
+		    		 	<p>
+							 {{comment.comment}}
+		    		 	</p>
+						 <button class="btn btn-primary btn-sm reply-comment" comment_id = {{comment.id}} data-toggle="modal" data-target="#Modal-Comment"> <i class="ion-chatbox-working"></i> Reply </button>
+						 {% for comment in comment.sub_comments.all %}
+						 {% include 'comments.html' %}
+					    {% endfor %}
+					    {% endfor %}
+					</div>
+					<button class="btn btn-default btn-sm " style="margin-top: 30px;" data-toggle="modal" data-target="#Modal-Comment"> <i class="ion-chatbox-working"></i> Add comment </button>
+	    		</div>
+	    	</div>
+    	</div>
+    </div>
+    <br><br>
+
+  {% endblock %}
+
+  {% block link_js %}
+
+  
+  
+
+  <script>
+    $(document).ready(function () {
+		$(document).on("click", ".reply-comment", function (event) {
+			event.preventDefault();
+			let comment_id = $(this).attr('comment_id');
+			$('#id_parent_comment').val(comment_id);
+			console.log(comment_id);
+		});
+	});
+  </script>
+
+  {% endblock %}

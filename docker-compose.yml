@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+    postgres:
+        image: postgres
+        volumes:
+            - ./pgdb/:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        environment:
+          POSTGRES_DB: 'food_stories_db'
+          POSTGRES_USER: 'yusif'
+          POSTGRES_PASSWORD: '12345'
+
+    adminer:
+      image: adminer
+      restart: always
+      ports:
+        - 8080:8080 
+
+    redis:
+      image: redis
+      restart: always
+      ports:
+        - 6379:6379 

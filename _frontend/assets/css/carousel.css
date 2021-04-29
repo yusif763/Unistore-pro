@@ -1,0 +1,412 @@
+.carousel{
+	position: relative;
+	width: 100%;
+	height: auto;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	z-index: 100;
+	background-color: #fff;
+}
+
+
+/* Controls */
+	.carousel .btn-control {
+		position: absolute;
+		top: 48%;
+		top: calc(50% - 25px);
+		
+	    width: 50px;
+	    height: 50px;
+	    background-color: transparent;
+	    border: none;
+	    padding: 14px 0px;
+	    opacity: 0;
+	    cursor: pointer;
+
+	    font-size: 52px;
+	    line-height: 52px;
+	    text-align: center;
+	    text-shadow: 0 1px 0 #777;
+		z-index: 200;
+		color: #fff;
+
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		-ms-transition: all 0.3s;
+		-o-transition: all 0.3s;
+		transition: all 0.3s;
+	}
+
+	@media (max-width: 599px) {
+		.carousel .btn-control {
+			display: none;
+		}
+	}
+
+	.carousel .btn-control > i {
+		opacity: 1;
+	}
+	
+	.carousel .btn-control[data-direction="right"] {
+		left: auto;
+		right: 0px;
+	}
+
+	.carousel .btn-control[data-direction="left"] {
+		left: 0px;
+		right: auto;
+	}
+
+	.carousel .btn-control:hover{ }
+	.carousel:hover .btn-control { opacity: 1; }
+
+
+	.carousel .btn-control > i > svg *{ stroke: #fff; }
+	.carousel.dark .btn-control > i > svg *{ stroke: #0c0c0c; }
+/* Controls */
+
+/* Markers */
+	.carousel > .markers{
+		position: absolute;
+		top: auto;
+		bottom: 20px;
+		left: 0;
+		width: 100%;
+		height: auto;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+
+		z-index: 200;
+	}
+
+	.carousel > .markers > li{
+		display: inline-block;
+		width: 10px;
+		height: 10px;
+		border-radius: 50px;
+		background-color: transparent;
+		border: 1px solid #fff;
+		box-sizing: border-box;
+		margin: 0 10px;
+		padding: 0;
+		overflow: hidden;
+		cursor: pointer;
+
+		-webkit-transition: all 0.3s ease;
+		-moz-transition: all 0.3s ease;
+		-ms-transition: all 0.3s ease;
+		-o-transition: all 0.3s ease;
+		transition: all 0.3s ease;
+	}
+	.carousel > .markers > li:hover,
+	.carousel > .markers > li.active{
+		background-color: #fff;
+	}
+
+	.carousel.dark > .markers > li {
+		border: 1px solid #0c0c0c;
+	}
+	.carousel.dark > .markers > li:hover,
+	.carousel.dark > .markers > li.active{
+		background-color: #0c0c0c;
+	}
+/* Markers */
+
+/* Items */
+	.carousel > .items{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		z-index: 200;
+		overflow: hidden;
+	}
+
+	.carousel > .items > .item{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+		z-index: 0;
+	}
+
+	.carousel > .items > .item.center{
+		position: relative;
+		z-index: 100;
+	}
+/* Items */
+
+/* Content */
+	.carousel > .items > .item > img.background {
+		position: relative;
+		width: 100%;
+		height: auto;
+		margin-bottom: -5px;
+	}
+
+
+	.carousel > .items > .item > .content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0,0,0,0);
+		z-index: 100;
+	}
+
+
+	.carousel > .items > .item > .content > .outside-content{
+		display: table;
+		width: 100%;
+		height: 100%;
+	}
+
+
+	.carousel > .items > .item > .content > .outside-content > .inside-content{
+		display: table-cell;
+		vertical-align: middle;
+		width: 100%;
+		height: auto;
+	}
+
+	.carousel > .items > .item > .content > .outside-content > .inside-content > .container {
+		background-color: transparent;
+		border: none;
+		opacity: 0;
+	}
+
+	.carousel > .items > .item > .content > .outside-content > .inside-content .align-center{
+		text-align: center !important;
+	}
+
+	.carousel > .items > .item > .content > .outside-content > .inside-content .align-right{
+		text-align: right !important;
+	}
+
+	.carousel > .items > .item > .content > .outside-content > .inside-content .align-left{
+		text-align: left !important;
+	}
+
+	.carousel > .items > .item > img {
+		position: absolute;
+		top: 0px;
+		bottom: 0;
+		margin-top: auto;
+		margin-bottom: auto;
+		z-index: 1;
+	}
+
+	.carousel > .items > .item > img.item-right {
+		right: 0;
+		width: 850px;
+		height: auto;
+	}
+
+	.carousel > .items > .item > img.item-left {
+		left: 0;
+		width: 850px;
+		height: auto;
+	}
+
+	.carousel > .items > .item h1.colorful,
+	.carousel > .items > .item h2.colorful {
+		display: inline-block;
+		padding: 10px 0px;
+		color: #fff;
+		margin: 0;
+	}
+
+/*	.carousel > .items > .item .blue { background-color: rgba(0,0,0,0.9); border-color: rgba(0,0,0,0.9); }
+	.carousel > .items > .item .orange { background-color: #d2441c; border-color: #d2441c; }
+	.carousel > .items > .item .black { background-color: #0c0c0c; border-color: #0c0c0c; }
+	.carousel > .items > .item .gray { background-color: #44454a; border-color: #44454a; }*/
+/* Content */
+
+
+/* Animation */
+	.carousel > .items > .item.center-left {
+		z-index: 10;
+		-webkit-animation: centerLeftItem 0.5s ease forwards;
+		-moz-animation:    centerLeftItem 0.5s ease forwards;
+		-o-animation:      centerLeftItem 0.5s ease forwards;
+		animation:         centerLeftItem 0.5s ease forwards;
+	}
+
+	@-webkit-keyframes centerLeftItem {
+	  from   { -webkit-transform: translateX(0%); }
+	  to { -webkit-transform: translateX(-100%); }
+	}
+	@-moz-keyframes centerLeftItem {
+	  from   { -moz-transform: translateX(0%); }
+	  to { -moz-transform: translateX(-100%); }
+	}
+	@-o-keyframes centerLeftItem {
+	  from   { -o-transform: translateX(0%); }
+	  to { -o-transform: translateX(-100%); }
+	}
+	@keyframes centerLeftItem {
+	  from   { transform: translateX(0%); }
+	  to { transform: translateX(-100%); }
+	}
+
+
+	.carousel > .items > .item.center-right{
+		z-index: 10;
+		-webkit-animation: centerRightItem 0.5s ease forwards;
+		-moz-animation:    centerRightItem 0.5s ease forwards;
+		-o-animation:      centerRightItem 0.5s ease forwards;
+		animation:         centerRightItem 0.5s ease forwards;
+	}
+
+	@-webkit-keyframes centerRightItem {
+	  from   { -webkit-transform: translateX(0%); }
+	  to { -webkit-transform: translateX(100%); }
+	}
+	@-moz-keyframes centerRightItem {
+	  from   { -moz-transform: translateX(0%); }
+	  to { -moz-transform: translateX(100%); }
+	}
+	@-o-keyframes centerRightItem {
+	  from   { -o-transform: translateX(0%); }
+	  to { -o-transform: translateX(100%); }
+	}
+	@keyframes centerRightItem {
+	  from   { transform: translateX(0%); }
+	  to { transform: translateX(100%); }
+	}
+
+	.carousel > .items > .item.right-center{
+		position: relative;
+		z-index: 100;
+	
+		-webkit-animation: rightCenterItem 0.5s ease forwards;
+		-moz-animation:    rightCenterItem 0.5s ease forwards;
+		-o-animation:      rightCenterItem 0.5s ease forwards;
+		animation:         rightCenterItem 0.5s ease forwards;
+	}
+
+	@-webkit-keyframes rightCenterItem {
+	  from   { -webkit-transform: translateX(100%); }
+	  to { -webkit-transform: translateX(0%); }
+	}
+	@-moz-keyframes rightCenterItem {
+	  from   { -moz-transform: translateX(100%); }
+	  to { -moz-transform: translateX(0%); }
+	}
+	@-o-keyframes rightCenterItem {
+	  from   { -o-transform: translateX(100%); }
+	  to { -o-transform: translateX(0%); }
+	}
+	@keyframes rightCenterItem {
+	  from   { transform: translateX(100%); }
+	  to { transform: translateX(0%); }
+	}
+
+	.carousel > .items > .item.left-center{
+		position: relative;
+		z-index: 100;
+	
+		-webkit-animation: leftCenterItem 0.5s ease forwards;
+		-moz-animation:    leftCenterItem 0.5s ease forwards;
+		-o-animation:      leftCenterItem 0.5s ease forwards;
+		animation:         leftCenterItem 0.5s ease forwards;
+	}
+
+	@-webkit-keyframes leftCenterItem {
+	  from   { -webkit-transform: translateX(-100%); }
+	  to { -webkit-transform: translateX(0%); }
+	}
+	@-moz-keyframes leftCenterItem {
+	  from   { -moz-transform: translateX(-100%); }
+	  to { -moz-transform: translateX(0%); }
+	}
+	@-o-keyframes leftCenterItem {
+	  from   { -o-transform: translateX(-100%); }
+	  to { -o-transform: translateX(0%); }
+	}
+	@keyframes leftCenterItem {
+	  from   { transform: translateX(-100%); }
+	  to { transform: translateX(0%); }
+	}
+
+	.carousel > .items > .item.center > .content > .outside-content > .inside-content > .container,
+	.carousel > .items > .item.left-center > .content > .outside-content > .inside-content > .container,
+	.carousel > .items > .item.right-center > .content > .outside-content > .inside-content > .container {
+		-webkit-animation: schowContent 0.7s 0.55s ease-out forwards;
+		-moz-animation:    schowContent 0.7s 0.55s ease-out forwards;
+		-o-animation:      schowContent 0.7s 0.55s ease-out forwards;
+		animation:         schowContent 0.7s 0.55s ease-out forwards;
+	}
+
+	@-webkit-keyframes schowContent {
+	  from   { -webkit-transform: translateX(100px); opacity: 0; }
+	  to { -webkit-transform: translateX(0px); opacity: 1; }
+	}
+	@-moz-keyframes schowContent {
+	  from   { -moz-transform: translateX(100px); opacity: 0; }
+	  to { -moz-transform: translateX(0px); opacity: 1; }
+	}
+	@-o-keyframes schowContent {
+	  from   { -o-transform: translateX(100px); opacity: 0; }
+	  to { -o-transform: translateX(0px); opacity: 1; }
+	}
+	@keyframes schowContent {
+	  from   { transform: translateX(100px); opacity: 0; }
+	  to { transform: translateX(0px); opacity: 1; }
+	}
+/* Animation */
+
+
+@media (max-width: 767px) {
+	/* Content */
+		.carousel > .items > .item h1.colorful,
+		.carousel > .items > .item h2.colorful {
+			display: inline-block;
+			padding: 10px 25px;
+			color: #fff;
+			margin: 0;
+			text-align: center;
+		}
+
+		.carousel > .items > .item .blue { background-color: transparent; border-color: transparent; }
+		.carousel > .items > .item .orange { background-color: transparent; border-color: transparent; }
+		.carousel > .items > .item .black { background-color: transparent; border-color: transparent; }
+		.carousel > .items > .item .gray { background-color: transparent; border-color: transparent; }
+		.carousel > .items > .item a.black {
+			display: block;
+			width: 200px;
+			background-color: rgba(0,0,0,0.9);
+			border-color: rgba(0,0,0,0.9);
+			margin: 0 auto;
+		}
+	/* Content */
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+	/* Controls */
+		.carousel .btn-control {
+			display: none;
+		}
+	/* Controls */
+
+	/* Content */
+		.carousel > .items > .item > img.item-right {
+			right: 0;
+			width: 100%;
+			height: auto;
+		}
+
+		.carousel > .items > .item > img.item-left {
+			left: 0;
+			width: 100%;
+			height: auto;
+		}
+	/* Content */
+}

@@ -1,0 +1,113 @@
+{% load static %}
+{% load i18n %}
+<div class="cart" data-toggle="inactive">
+    <div class="label">
+      <i class="ion-bag" id="sebet-count"></i> 
+    </div>
+
+    <div class="overlay"></div>
+
+    <div class="window">
+      <div class="title">
+        <button type="button" class="close"><i class="ion-android-close"></i></button>
+        <h4>{% trans 'Shopping cart' %}</h4>
+      </div>
+
+      <div class="content" id="sebetichi">
+
+        
+
+
+      </div>
+
+      <div class="checkout container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 align-right">
+            <a class="btn btn-primary" href="./checkout/">{% trans 'Checkout order'%}  </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="toplinks">
+    <a href="#signin" data-toggle="modal" data-target="#Modal-Registration"> <i class="ion-person"></i>{% trans 'Registration' %} </a>
+    {% if user.is_authenticated %}
+    <a href="#signin" data-toggle="modal" data-target="#Modal-Profile" >{{user.username}}
+      
+    </a>
+
+    {% else %}
+    <a href="#signin" data-toggle="modal" data-target="#Modal-SignIn"> <i class="ion-unlocked"></i>{% trans 'Sign In' %}</a>
+    {% endif %}
+    <a href="./favorites/"> <i class="ion-ios-heart"></i>{% trans 'Favorites' %}</a>
+    <a href="tel:+80005554465" class="hidden-xs"> <i class="ion-android-call"></i> 8000 555-44-65 </a>
+  </div>
+
+  
+  <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./"> Unistore Pro </a>
+          <a class="navbar-brand pull-right hidden-sm hidden-md hidden-lg" href="#open-cart"> <i class="ion-bag"></i> 7 </a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            {% if active == 'home' %}
+            <li class="active"><a href="{% url 'common:home' %}">{% trans 'Home' %}</a></li>
+            {% else %}
+            <li><a href="{% url 'common:home' %}">{% trans 'Home' %}</a></li>
+            {% endif %}
+            {% if active == 'store' %}
+            <li class="active"><a href="{% url 'product:product_list' %}">{% trans 'Store' %}</a></li>
+            {% else %}
+            <li><a href="{% url 'product:product_list' %}">{% trans 'Store' %}</a></li>
+            {% endif %}
+            {% if active == 'blog' %}
+            <li class="active"><a href="{% url 'common:blog' %}">{% trans 'Blog' %}</a></li>
+            {% else %}
+            <li><a href="{% url 'common:blog' %}">{% trans 'Blog' %}</a></li>
+            {% endif %}
+            {% if active == 'contact' %}
+            <li class="active"><a href="{% url 'contact:contact' %}">{% trans 'Contacts' %}</a></li>
+            {% else %}
+            <li><a href="{% url 'contact:contact' %}">{% trans 'Contacts' %}</a></li>
+            {% endif %}
+            <li class="dropdown">
+              <a href="./store/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                More <i class="ion-android-arrow-dropdown"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'product:product_list' %}">{% trans 'Product' %}</a></li>
+                <li><a href="{% url 'contact:about' %}">{% trans 'About Us' %}</a></li>
+                <li><a href="{% url 'checkout:checkout' %}">{% trans 'Checkout' %}</a></li>
+                <li><a href="{% url 'common:faq' %}">{% trans 'FAQ' %}</a></li>
+                <li><a href="./gallery/">{% trans 'Gallery' %}</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">{% trans 'Variations' %}</li>
+                <li><a href="./blog/item-photo.html">{% trans 'Article Photo' %}</a></li>
+                <li><a href="./blog/item-video.html">{% trans 'Article Video' %}</a></li>
+              </ul>
+            </li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+
+
+        <div class="search hidden-xs" data-style="hidden">
+          <div class="input">
+            <button type="button"><i class="ion-ios-search"></i></button>
+
+            <input type="text" name="search" value="" placeholder="Type here..." />
+          </div>
+        </div>
+      </div><!--/.container-fluid -->
+  </nav>

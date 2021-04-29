@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <hr class="offset-top">
+
+    <div class="tags">
+      <div class="container">
+          <p>Search by tags</p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default btn-sm active">
+              <input type="radio" name="options" id="option1" checked> All items
+            </label>
+            <label class="btn btn-default btn-sm">
+              <input type="radio" name="options" id="option2"> Newest
+            </label>
+            <label class="btn btn-default btn-sm">
+              <input type="radio" name="options" id="option3"> Popular
+            </label>
+            <label class="btn btn-default btn-sm">
+              <input type="radio" name="options" id="option4"> News
+            </label>
+            <label class="btn btn-default btn-sm">
+              <input type="radio" name="options" id="option5"> Articles
+            </label>
+            <label class="btn btn-default btn-sm">
+              <input type="radio" name="options" id="option6"> Reviews
+            </label>
+          </div>
+      </div>
+    </div>
+    <hr class="offset-md">
+
+    <div class="blog">
+      <div class="container">
+        <div class="row">
+          {% for blog in blogs %}
+          <div class="col-sm-6 col-md-6 item">
+
+            <div class="body">
+              <a href="{% url 'common:blog_detail' blog.pk %}" class="view"><i class="ion-ios-book-outline"></i></a>
+
+              <a href="{% url 'common:blog_detail' blog.pk %}">
+                <img src="{{blog.image.url}}" title="Apple Devices" alt="Apple Devices">
+              </a>
+
+              <div class="caption">
+                <h1 class="h3">{{blogs.title}}</h1>
+                <label> 07.01.2017</label>
+                <hr class="offset-sm">
+
+                <p>{{blog.short_desc}}</p>
+                <hr class="offset-sm">
+
+                <a href="{% url 'common:blog_detail' blog.pk %}"> View article <i class="ion-ios-arrow-right"></i> </a>
+              </div>
+            </div>
+          </div>  
+          {% endfor %}
+        </div>
+
+        <nav>
+          <ul class="pagination">
+            <li>
+              <a href="#" aria-label="Previous">
+                <span aria-hidden="true"><i class="ion-ios-arrow-left"></i></span>
+              </a>
+            </li>
+            <li class="active"><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li class="disabled"><a href="#">..</a></li>
+            <li><a href="#">10</a></li>
+            <li>
+              <a href="#" aria-label="Next">
+                <span aria-hidden="true"><i class="ion-ios-arrow-right"></i></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+
+    <hr class="offset-lg">
+    <hr class="offset-sm">
+  {% endblock %}
+
+  

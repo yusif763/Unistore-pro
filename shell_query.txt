@@ -1,0 +1,49 @@
+from common.models import *
+Blog.objects.all().order_by('-created_at')[:6]
+
+from django.db.models import Q
+Blog.objects.filter( Q(title__icontains = 'nin')| Q(short_desc__icontains = 'nin'))
+
+from django.db.models import Count
+Blog.objects.annotate(Count('blogs__comment')).order_by('-blogs__comment__count')[:3]
+
+
+blog1 = Blog.objects.get(id=3)
+blog1.tags.all()
+
+
+tag1 = Tag.objects.get(id = 1)
+tag1.tags.all()
+
+
+blog2 = Blog.objects.get(id = 2)
+blog2.blogs.all()
+
+
+
+prod1 = Product.objects.all().order_by('price','created_at')
+prod1
+
+
+prod2 = Product.objects.filter( Q(full_title__icontains = 'r') | Q(description__icontains = 'r'))
+prod2
+
+
+prod3 = Product.objects.get(id = 2)
+prod3.productsreview.all()
+
+
+Product.objects.filter( Q( category__types = prod4.category.types) | Q(brand__brand = prod4.brand.brand))
+
+
+
+prod7 = Product.objects.all()
+prod7.values('category' , 'category__types')
+
+
+cat1 = Category.objects.get(id = 2)
+cat1.categories.all()
+
+
+tag1 = Tag.objects.get(id = 2)
+tag1.taglar.all()

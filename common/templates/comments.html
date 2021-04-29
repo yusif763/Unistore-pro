@@ -1,0 +1,11 @@
+<div class="comment-item" style="padding-left: 10px;">
+    <h3>{{comment.full_name}}</h3>
+    <label>{{comment.created_at|date:"F d, Y"}}</label>
+    <p>
+      {{comment.comment}}
+    </p>
+    <button class="btn btn-primary btn-sm reply-comment " comment_id = {{comment.id}} data-toggle="modal" data-target="#Modal-Comment"> <i class="ion-chatbox-working"></i> Reply </button>
+  {% for comment in comment.sub_comments.all %}
+  {% include 'comments.html' %}
+  {% endfor %}
+</div>

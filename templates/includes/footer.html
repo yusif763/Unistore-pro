@@ -1,0 +1,452 @@
+{% load static custom_tags %}
+<hr class="offset-lg">
+    <hr class="offset-sm">
+    <footer>
+      <div class="about">
+        <div class="container">
+          <div class="row">
+            <hr class="offset-md">
+
+            <div class="col-xs-6 col-sm-3">
+              <div class="item">
+                <i class="ion-ios-telephone-outline"></i>
+                <h1>24/7 free <br> <span>support</span></h1>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="item">
+                <i class="ion-ios-star-outline"></i>
+                <h1>Low price <br> <span>guarantee</span></h1>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="item">
+                <i class="ion-ios-gear-outline"></i>
+                <h1> Manufacturer’s <br> <span>warranty</span></h1>
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-3">
+              <div class="item">
+                <i class="ion-ios-loop"></i>
+                <h1> Full refund <br> <span>guarantee</span> </h1>
+              </div>
+            </div>
+
+            <hr class="offset-md">
+          </div>
+        </div>
+      </div>
+
+      <div class="subscribe">
+        <div class="container align-center">
+            <hr class="offset-md">
+
+            <h1 class="h3 upp">Join our newsletter</h1>
+            <p>Get more information and receive special discounts for our products.</p>
+            <hr class="offset-sm">
+
+            <form action="" method="post">
+              {% csrf_token %}
+              {% get_subs as subs %}
+              <div class="input-group">
+                {{subs.email}}
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary"> Subscribe <i class="ion-android-send"></i> </button>
+                </span>
+              </div><!-- /input-group -->
+            </form>
+            <hr class="offset-lg">
+            <hr class="offset-md">
+
+            <div class="social">
+              <a href="#"><i class="ion-social-facebook"></i></a>
+              <a href="#"><i class="ion-social-twitter"></i></a>
+              <a href="#"><i class="ion-social-googleplus-outline"></i></a>
+              <a href="#"><i class="ion-social-instagram-outline"></i></a>
+              <a href="#"><i class="ion-social-linkedin-outline"></i></a>
+              <a href="#"><i class="ion-social-youtube-outline"></i></a>
+            </div>
+
+
+            <hr class="offset-md">
+            <hr class="offset-md">
+        </div>
+      </div>
+
+
+      <div class="container">
+        <hr class="offset-md">
+
+        <div class="row menu">
+          <div class="col-sm-3 col-md-2">
+            <h1 class="h4">Information <i class="ion-plus-round hidden-sm hidden-md hidden-lg"></i> </h1>
+
+            <div class="list-group">
+              <a href="#" class="list-group-item">About</a>
+              <a href="#" class="list-group-item">Terms</a>
+              <a href="#" class="list-group-item">How to order</a>
+              <a href="#" class="list-group-item">Delivery</a>
+            </div>
+          </div>
+          <div class="col-sm-3 col-md-2">
+            <h1 class="h4">Products <i class="ion-plus-round hidden-sm hidden-md hidden-lg"></i> </h1>
+
+            <div class="list-group">
+              <a href="#" class="list-group-item">Laptops</a>
+              <a href="#" class="list-group-item">Tablets</a>
+              <a href="#" class="list-group-item">Servers</a>
+            </div>
+          </div>
+          <div class="col-sm-3 col-md-2">
+            <h1 class="h4">Support <i class="ion-plus-round hidden-sm hidden-md hidden-lg"></i> </h1>
+
+            <div class="list-group">
+              <a href="#" class="list-group-item">Returns</a>
+              <a href="#" class="list-group-item">FAQ</a>
+              <a href="#" class="list-group-item">Contacts</a>
+            </div>
+          </div>
+          <div class="col-sm-3 col-md-2">
+            <h1 class="h4">Location</h1>
+
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Language
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#English"> <img src="{% static 'assets/img/flags/gb.png' %}" alt="Eng"/> English</a></li>
+                <li><a href="#Spanish"> <img src="{% static 'assets/img/flags/es.png' %}" alt="Spa"/> Spanish</a></li>
+                <li><a href="#Deutch"> <img src="{% static 'assets/img/flags/de.png' %}" alt="De"/> Deutch</a></li>
+                <li><a href="#French"> <img src="{% static 'assets/img/flags/fr.png' %}" alt="Fr"/> French</a></li>
+              </ul>
+            </div>
+            <hr class="offset-xs">
+
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Currency
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <li><a href="#Euro"><i class="ion-social-euro"></i> Euro</a></li>
+                <li><a href="#Dollar"><i class="ion-social-usd"></i> Dollar</a></li>
+                <li><a href="#Yen"><i class="ion-social-yen"></i> Yen</a></li>
+                <li><a href="#Bitcoin"><i class="ion-social-bitcoin"></i> Bitcoin</a></li>
+              </ul>
+            </div>
+
+          </div>
+          <div class="col-sm-3 col-md-3 col-md-offset-1 align-right hidden-sm hidden-xs">
+            <h1 class="h4">Unistore Pro, Inc.</h1>
+
+              <address>
+                1305 Market Street, Suite 800<br>
+                San Francisco, CA 94102<br>
+                <abbr title="Phone">P:</abbr> (123) 456-7890
+              </address>
+
+              <address>
+                <strong>Support</strong><br>
+                <a href="mailto:#">sup@example.com</a>
+              </address>
+
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 col-md-9 payments">
+            <p>Pay your order in the most convenient way</p>
+
+            <div class="payment-icons">
+              <img src="{% static 'assets/img/payments/paypal.svg' %}" alt="paypal">
+              <img src="{% static 'assets/img/payments/visa.svg' %}" alt="visa">
+              <img src="{% static 'assets/img/payments/master-card.svg' %}" alt="mc">
+              <img src="{% static 'assets/img/payments/discover.svg' %}" alt="discover">
+              <img src="{% static 'assets/img/payments/american-express.svg' %}" alt="ae">
+            </div>
+            <br>
+
+          </div>
+          <div class="col-sm-3 col-md-3 align-right align-center-xs">
+            <hr class="offset-sm hidden-sm">
+            <hr class="offset-sm">
+            <p>Unistore Pro © 2016 <br> Designed By <a href="http://sunrise.ru.com/" target="_blank">Sunrise Digital</a></p>
+            <hr class="offset-lg visible-xs">
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="Modal-SignIn" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <h2 class="modal-title text-center">Sign In</h2>
+                  <br>
+
+                  <form class="signin" id="login-api" action="" method="POST">
+                    <div class="form-group">
+                      <input type="username" class="form-control" required placeholder="Email" name="username">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" required placeholder="Password" name="password">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Ok</button>
+                    <a href="{% url 'account:reset_password' %}" data-action="">Forgot your password</a>
+                  </form>
+                  <br>
+
+                  <div class="social-login">
+                      <div class="or"><p>OR</p></div>
+                      <a href="{% url 'social:begin' 'facebook' %}"><i class="icon" data-src="{% static 'assets/img/icons/facebook.svg' %}"></i></a>
+                      <p>via</p>
+                      <a href="{% url 'social:begin' 'google-oauth2' %}"><i class="icon" data-src="{% static 'assets/img/icons/google-plus.svg'%} "></i></a>
+                  </div>
+                  <br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="Modal-Profile" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <h2 class="modal-title text-center">Hi {{user.username}}</h2>
+                  <br>
+
+                  <form class="signin" action="" method="post">
+                  
+
+                    <a href="#signin" data-toggle="modal" data-target="#Modal-Change-Password"  data-dismiss="modal" class="close" aria-label="Close">Change Password </a>
+                    <a href="#forgin-password" class="close" data-dismiss="modal"  aria-label="Close" data-action="Forgot-Password">Password recovery </a>
+                    <a href="{% url 'account:reset_password' %}"class="close">Reset your Password?</a>
+                    <a href="{% url 'account:logout'%}" class="close"  aria-label="Close" > Log Out</a>
+                  </form>
+                  <br>
+                  <br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="Modal-Registration" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                  <h2 class="modal-title text-center">Registration</h2>
+                  <br>
+
+                  <form class="join" action="" method="post" enctype="multipart/form-data" id="register_form">
+                 
+                    <div class="form-group">
+                      <input type="text" class="form-control" required placeholder="Write Email" name="email">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" required placeholder="First name" name="first_name">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" required placeholder="Last name" name="last_name">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" required placeholder="Username" name="username">
+                    </div>
+                    <div class="form-group">
+                      <input type="text" class="form-control" required placeholder="Biography" name="bio">
+                    </div>
+
+                    <div class="form-group">
+                      <input type="password" class="form-control" required placeholder="Password" name="password">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" required placeholder="Confirm Your Password" name="password2">
+                    </div>
+                  
+                    <button type="submit" class="btn btn-primary btn-sm">Ok</button> &nbsp;&nbsp;
+                    <a href="#">Terms ></a>
+
+                    <br><br>
+                    <p>
+                      By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.
+                    </p>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="Modal-Change-Password" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="modal-title">Change Your Password</h4>
+                  <br>
+
+                  <form class="join" action="" id="change-form" method="post">
+                        <div class="form-group">
+                            
+                            <h6 class="center">Please choose a new password to finish signing in.</h6>
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" required placeholder="Old Password" name="old_password">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" required placeholder="New password" name="new_password">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" required placeholder="Confirm your password" name="new_password2">
+                        </div>
+
+
+                    <a href="#Sign-In" data-toggle="modal" data-target="#Modal-Profile" data-dismiss="modal" class="close" style="float: left;"  aria-label="Close">Back ></a>
+                    <button type="submit" class="btn btn-primary btn-sm">Ok</button> &nbsp;&nbsp;
+                  </form>
+                </div>
+                <div class="col-sm-6">
+                  <br><br>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="modal fade" id="Modal-ForgotPassword" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4 class="modal-title">Forgot Your Password?</h4>
+                  <br>
+
+                  <form class="join" action="index.php" method="post">
+                    <input type="email" name="email" value="" placeholder="E-mail" required="" class="form-control" />
+                    <br>
+
+                    <button type="submit" class="btn btn-primary btn-sm">Continue</button>
+                    <a href="#Sign-In" data-toggle="modal" data-target="#Modal-Profile" data-dismiss="modal" class="close" style="float: left;" aria-label="Close">Back ></a>
+                  </form>
+                </div>
+                <div class="col-sm-6">
+                  <br><br>
+                  <p>
+                    Enter the e-mail address associated with your account. Click submit to have your password e-mailed to you.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="Modal-Gallery" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="Modal-Comment" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header align-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="ion-android-close"></i></span></button>
+            <h1 class="h4 modal-title">Add your comment</h1>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+            <form class="join" action="" method="post">
+              <div class="row">
+                {% csrf_token %}
+                {% get_comment  as review %}
+                {% get_blog_comment as com %}
+              	<div class="col-sm-12">
+                	{{review.comment}}
+                	<br>
+                </div>
+                <div class="col-sm-6">
+                    {{review.full_name}}
+                </div>
+                <div class="col-sm-6">
+                    {{review.email}}
+                </div>
+                {{ form.parent_comment }}
+                <div class="col-sm-12">
+                	<div class="align-center">
+	                	<br>
+	                	<button type="submit" class="btn btn-primary btn-sm"> <i class="ion-android-send"></i> Send</button>
+                		<button type="button" class="btn btn-primary btn-sm" data-dismiss="modal"> <i class="ion-android-share"></i> No, thanks </button>
+	                	<br><br>
+                	</div>
+                </div>
+              </div>
+             </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

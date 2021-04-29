@@ -1,0 +1,11 @@
+<div class="comment-item" style="padding-left: 10px;">
+    <h3>{{review.full_name}}</h3>
+    <label>{{review.created_at|date:"F d, Y"}}</label>
+    <p>
+      {{review.comment}}
+    </p>
+    <button class="btn btn-primary btn-sm reply-comment" comment_id = {{review.id}}  data-toggle="modal" data-target="#Modal-Comment"> <i class="ion-chatbox-working"></i> Reply </button>
+  {% for review in review.sub_reviews.all %}
+  {% include 'comment.html' %}
+  {% endfor %}
+</div>

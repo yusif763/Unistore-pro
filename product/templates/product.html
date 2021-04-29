@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% block links_css %}
+  <link href="{% static 'assets/css/carousel-product.css' %}" rel="stylesheet">
+{% endblock %}
+    <hr class="offset-lg">
+    <hr class="offset-lg">
+    <hr class="offset-lg hidden-xs">
+
+
+    <section class="product">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-7 col-md-7 white no-padding">
+            <div class="carousel-product" data-count="{{product.productimages.all|length}}" data-current="1">
+
+              <div class="items">
+                <button class="btn btn-control" data-direction="right"> <i class="ion-ios-arrow-right"></i></button>
+                <button class="btn btn-control" data-direction="left"> <i class="ion-ios-arrow-left"></i></button>
+
+                
+                {% for item in product.productimages.all %}
+                {% if forloop.counter == 1 %}
+                <div class="item center" data-marker="1">
+                  <img src="{{item.image.url}}" alt="Microsoft Surface Studio" class="background"/>
+                </div>
+                {% else %}
+                <div class="item" data-marker="{{ forloop.counter }}">
+                  <img src="{{item.image.url}}" alt="Microsoft Surface Studio" class="background"/>
+                </div>
+                {% endif %}
+                {% endfor %}
+                
+              </div>
+
+              <ul class="markers">
+                <li data-marker="1" class="active"></li>
+                <li data-marker="2"></li>
+                <li data-marker="3"></li>
+                
+              </ul>
+
+            </div>
+          </div>
+          <div class="col-sm-5 col-md-5 no-padding-xs">
+            <div class="caption">
+              <img src="{% static 'assets/img/brands/microsoft.png' %}" alt="Microsoft" class="brand hidden-xs hidden-sm" />
+
+              <h1>{{product.short_title}}</h1>
+              {% for spec in product.shortspecs.all %}
+              <p> &middot;{{ spec.short_specs }}</p>
+              {% endfor %}
+              <hr class="offset-md hidden-sm">
+              <hr class="offset-sm visible-sm">
+              <hr class="offset-xs visible-sm">
+              {% if product.faiz %}
+              <p class="price">{{product.endirim}}</p>
+              <p class="price through">{{product.price}}</p>
+              <hr class="offset-md">
+              {% else %}
+              <p class="price">{{product.price}}</p>
+              <hr class="offset-md">
+              {% endif %}
+
+              <button class="btn btn-primary rounded"> <i class="ion-bag"></i> Add to cart</button>
+              <button class="btn btn-link"> <i class="ion-ios-heart"></i> See later </button>
+            </div>
+          </div>
+        </div>
+        <hr class="offset-sm hidden-xs">
+
+        <div class="row">
+          <div class="col-sm-7 white sm-padding">
+            <hr class="offset-sm visible-xs">
+            <h2 class="h1">{{product.full_title}}</h2>
+            <br>
+            <p>
+              {{product.description}}
+            </p>
+            <br>
+            <h2>Product specifications</h2>
+             <br>
+             {% for prodspecname in prodspecnames %}
+              <div class="row specification">
+                <div class="col-sm-4"> <label>{{ prodspecname.title}}</label></div>
+             {% for productspecdesc in productspecdescs %}
+                {% if  productspecdesc.prod_spec_name.title == prodspecname.title %}
+                <div class="col-sm-8"> <p>{{productspecdesc.desc}}</p></div>
+                {% endif %}
+              {% endfor %}
+                
+              </div>
+              {% endfor %}
+          </div>
+          <div class="col-sm-5 no-padding-xs">
+            <div class="talk white">
+              <h2 class="h3">Do you have any questions?</h2>
+              <p class="">Whatsuping now with our manager</p>
+              <hr class="offset-md">
+
+              <a href="tel:+80005554465" class="btn btn-primary btn-sm"> <i class="ion-social-whatsapp"></i> 8000 555-44-65 </a>
+              <hr class="offset-md visible-xs">
+            </div>
+            <hr class="offset-sm hidden-xs">
+
+            <div class="comments white">
+              <h2 class="h3">What do you think? (#3)</h2>
+              <br>
+
+
+              <div class="wrapper">
+                <div class="content" id="product-comment">
+                 
+                  {% for review in parent_comments %}
+                  
+                  <div class="comment-item">
+                    <h3>{{review.full_name}}</h3>
+                    <label>{{review.created_at|date:"F d, Y"}}</label>
+                    <p>
+                      {{review.comment}}
+                    </p>
+                    <button class="btn btn-primary btn-sm reply-comment" comment_id = {{review.id}}  data-toggle="modal" data-target="#Modal-Comment"> <i class="ion-chatbox-working"></i> Reply </button>
+                  {% for review in review.sub_reviews.all %}
+                    {% include 'comment.html' %}
+                  {% endfor %}
+                </div>
+                  
+                  {% endfor %}
+                  
+                </div>
+              </div>
+              <hr class="offset-lg">
+              <hr class="offset-md">
+
+              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modal-Comment"> <i class="ion-chatbox-working"></i> Add comment </button>
+              <hr class="offset-md visible-xs">
+            </div>            
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="offset-lg">
+
+    <section class="products">
+      <div class="container">
+        <h2 class="upp align-center-xs"> Related products </h2>
+        <hr class="offset-lg">
+
+        <div class="row">
+          {% for product in products2 %}
+          <div class="col-sm-4 col-md-3 product">
+            <div class="body">
+              <a href="#favorites" class="favorites" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+              <a href="./"><img src="{{product.main_image.url }}" alt="Apple iMac 27 Retina"/></a>
+
+              <div class="content align-center">
+                <p class="price">{{product.price}}</p>
+                <h2 class="h3">{{product.short_title}}</h2>
+                <hr class="offset-sm">
+
+                <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                <button class="btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+         
+
+
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <hr class="offset-lg">
+    <hr class="offset-sm">
+    
+
+  
+  {% endblock %}
+    
+
+  {% block link_js %}
+
+  
+  <script src="{% static 'assets/js/carousel-product.js' %}"></script>
+  <!-- <script src="{% static 'assets/js/carousel-product.js' %}"></script> -->
+  <script type="text/javascript" src="{% static 'assets/js/jquery.touchSwipe.min.js' %}"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+		$(document).on("click", ".reply-comment", function (event) {
+			event.preventDefault();
+			let comment_id = $(this).attr('comment_id');
+			$('#id_parent_comment').val(comment_id);
+			console.log(comment_id);
+		});
+	});
+  </script>
+
+  <script>
+    window.URLS['recipeDetail'] = '{% url "productapis:product_detail_api" "1234567" %}'
+  .replace('1234567', '{{ recipe_tag.id }}');
+
+  </script>
+
+  {% endblock %}

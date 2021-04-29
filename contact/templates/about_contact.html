@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+    {% block content %}
+    {% load static %}
+    <header>
+      <div class="carousel" data-count="1" data-current="1">
+        <div class="items">
+          <div class="item center" data-marker="1">
+            <img src="{% static 'assets/img/carousel/bckg-3.jpg' %}" alt="Background" class="background hidden-xs hidden-sm"/>
+            <img src="{% static 'assets/img/carousel/bckg-3-sm.jpg' %}" alt="Background" class="background visible-sm"/>
+            <img src="{% static 'assets/img/carousel/bckg-3-xs.jpg' %}" alt="Background" class="background visible-xs"/>
+
+            <div class="content">
+              <div class="outside-content">
+                <div class="inside-content">
+                  <div class="container align-right">
+                    <hr class="offset-lg visible-xs">
+
+                    <h1 class="h3 upp colorful blue">Beautiful, smart and powerful</h1>
+                    <hr class="offset-sm">
+
+                    <h2 class="h1 lg upp colorful blue">Brand new <br> devices for all</h2>
+                    <hr class="offset-md">
+                    <hr class="offset-md">
+                    <a href="./store/" rel="nofollow" class="btn btn-primary btn-lg black"> Buy now </a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+
+
+    <div class="white">
+      <hr class="offset-lg">
+      <hr class="offset-lg">
+      <hr class="offset-lg">
+      <hr class="offset-lg hidden-xs hidden-sm">
+
+      <div class="container about">
+        <div class="row">
+          <div class="col-sm-6 hidden-sm hidden-md hidden-lg">
+            <img src="{% static 'assets/img/about/anytime-mobility.png' %}" alt="Anywhere, anytime mobility" title="Anywhere, anytime mobility"/>
+          </div>
+          <div class="col-sm-6">
+            <hr class="offset-lg hidden-xs hidden-sm">
+            <hr class="offset-lg hidden-xs hidden-sm">
+            <h2 class="featurette-heading">Anywhere, anytime mobility.</h2>
+            <hr class="offset-md">
+
+            <p class="lead">
+              School, home, or on the road, the slim design, and latest processors give you everything you need to take on the world.
+              Conveniently store up to 100GB of your files and content with the included 2-years of Google Drive access.
+              With up to 9.5 hours of long lasting battery, search, stream, chat, and more for hours without recharging.
+            </p>
+          </div>
+          <div class="col-sm-6 hidden-xs">
+            <hr class="offset-lg visible-sm">
+            <hr class="offset-lg visible-sm">
+            <img src="{% static 'assets/img/about/anytime-mobility.png' %}" alt="Anywhere, anytime mobility" title="Anywhere, anytime mobility"/>
+          </div>
+        </div>
+      </div>
+
+      <hr class="offset-lg">
+      <hr class="offset-lg">
+      <hr class="offset-lg hidden-xs">
+    </div>
+    <hr class="offset-lg">
+    <hr class="offset-lg">
+
+    <div class="">
+      <hr class="offset-lg hidden-xs">
+      <hr class="offset-lg hidden-xs">
+      <div class="container about">
+        <div class="row">
+          <div class="col-sm-6">
+            <hr class="offset-lg visible-sm">
+            <img src="{% static 'assets/img/about/new-entertainment.png' %}" alt="Anywhere, anytime mobility" title="Anywhere, anytime mobility"/>
+          </div>
+          <div class="col-sm-6">
+            <hr class="offset-lg hidden-xs hidden-sm">
+            <hr class="offset-lg hidden-xs hidden-sm">
+            <h2 class="featurette-heading">Entertainment at your fingertips.</h2>
+            <hr class="offset-md">
+
+            <p class="lead">
+              Capture all the details with vibrant clarity, even in low light. Enjoy the nuances of face-to-face conversations, 
+              thanks to the HD Webcam. Lay back and get comfortable with your favorite movies and shows. 
+              The HD IPS screens delivers your entertainment in stunning quality, from any angle.
+            </p>
+          </div>
+        </div>
+      </div>
+      <hr class="offset-lg">
+      <hr class="offset-lg">
+    </div>
+
+
+
+    <hr class="offset-lg hidden-xs">
+    <hr class="offset-lg hidden-xs">
+    <hr class="offset-lg hidden-xs">
+    <div class="white">
+      <hr class="offset-lg hidden-xs">
+      <hr class="offset-lg hidden-xs">
+      <hr class="offset-lg">
+
+      <div class="container about">
+        <div class="row">
+          <div class="col-sm-6 hidden-sm hidden-md hidden-lg">
+            <img src="{% static 'assets/img/about/sleek-and-colorful.png' %}" alt="Sleek and colorful" title="Sleek and colorful"/>
+          </div>
+          <div class="col-sm-6">
+            <hr class="offset-lg hidden-xs hidden-sm">
+            <hr class="offset-lg hidden-xs hidden-sm">
+            <h2 class="featurette-heading">Sleek and powerfull.</h2>
+            <hr class="offset-md">
+
+            <p class="lead">
+              With the brand new laptops running lightning-fast Windows 10, the best of Microsoft is at hand on a colorfully 
+              sleek and stylish notebook. Express yourself with an HD 29.5 cm (11.6") diagonal screen in a slim package, 
+              styled in smoke silver or sky blue.
+            </p>
+          </div>
+          <div class="col-sm-6 hidden-xs">
+            <hr class="offset-lg visible-sm">
+            <img src="{% static 'assets/img/about/sleek-and-colorful.png' %}" alt="Sleek and colorful" title="Sleek and colorful"/>
+          </div>
+        </div>
+      </div>
+
+      <hr class="offset-lg">
+      <hr class="offset-lg hidden-xs">
+      <hr class="offset-lg hidden-xs">
+    </div>
+    <hr class="offset-lg hidden-xs">
+    <hr class="offset-lg">
+
+    <div class="container align-center">
+      <h1 class="upp"> Contact us </h1>
+      <p> Please insert question to a form below. </p>
+      <hr class="offset-md">
+      
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+          <form class="contact" method="POST" action="">
+            {% csrf_token %}
+              {{ form.full_name }}
+              {% for error in form.full_name.errors %}
+                  <li class="alert-danger">{{ error  }}</li>
+              {% endfor %}
+              <br>
+              {{ form.email }}
+              {% for error in form.email.errors %}
+                  <li class="alert-danger">{{ error  }}</li>
+              {% endfor %}
+              <br>
+              {{ form.message }}
+              {% for error in form.message.errors %}
+                  <li class="alert-danger">{{ error  }}</li>
+              {% endfor %}
+
+            <button type="submit" class="btn btn-primary justify"> Send question</button>
+          </form>
+        </div>
+      </div>
+      <br>
+    </div>
+
+
+    <hr class="offset-lg">
+    <hr class="offset-sm">
+   {% endblock %}

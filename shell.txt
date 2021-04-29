@@ -1,0 +1,26 @@
+
+SUbscriber modeli 
+sub1 = Subscriber.objects.create(email = 'yusifhuseynli1105@gmail.com', user = User.objects.get(id = 1))
+
+blog modeli 
+blog1 = Blog.objects.create(image = 'blog.jpg', title  = 'blog title' , short_desc = 'blog short desc')
+
+comment modeli
+comment1 = Comment.objects.create(full_name = 'Yusif Huseynli',email = 'yusifhuseynli1105@gmail.com', comment = 'fwfsdfsrwefsdfsdfssdffw' , blog = blog1 )
+
+
+contact modeli 
+contact1 = Contact(full_name = 'Yusif Huseynli', message = 'fkdsfsklfqefl' , email = 'yusifhuseynli1105@gmail.com')
+
+
+
+
+cat1 = Category.objects.create(types = 'Laptops')
+brand1 = Brands.objects.create(brand = 'Acer')
+screen1 = ScreenSize.objects.create(size = '10 ich ')
+product1 = Product.objects.create(short_title = 'Acer',price = '1000', short_spec ='fjkwejfkwfhj',full_title = 'Acer Aspire',description = 'fskjfjnwsnkjfnsckjfqfknjfwfknjwkjnfwfnwkfnjwf', category = cat1,brand = brand1 )
+prodspec1 = ProductSpecName.objects.create(title = 'opareting sistem' , product = product1)
+prodspecdesc1 = ProductSpecDesc.objects.create(desc = 'Windows', product = product1 , prod_spec_name = prodspec1)
+review1 = Review.objects.create(full_name = 'Yusif huseynli',email = 'yusifhuseynli105@gmail.com', comment = 'lgkkjhfgjhkdgkje', rating = 9.5 , product = product1)
+
+

@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <hr class="offset-top">
+
+    <div class="tags">
+      <div class="container">
+          <div class="btn-group pull-right sorting">
+            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="ion-arrow-down-b"></i> Sorting by name
+            </button>
+
+            <ul class="dropdown-menu">
+              <li class="active"><a href="#"> <i class="ion-arrow-down-c"></i> Name [A-Z]</a></li>
+              <li><a href="#"> <i class="ion-arrow-up-c"></i> Name [Z-A]</a></li>
+              <li><a href="#"> <i class="ion-arrow-down-c"></i> Price [Low-High]</a></li>
+              <li><a href="#"> <i class="ion-arrow-up-c"></i> Price [High-Low]</a></li>
+            </ul>
+          </div>
+
+          <p>Search by tags</p>
+          <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default btn-sm active">
+              <input type="radio" name="options" id="option1" checked> All products
+            </label>
+            {% for tag in tags %}
+            <label class="btn btn-default btn-sm">
+              <input type="radio" name="options" id="option2"> {{tag.tags}}
+            </label>
+            {% endfor %}
+          </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <!-- Filter -->
+        <div class="col-sm-4 col-md-3">
+          <hr class="offset-lg">
+
+          <div class="filter">
+            <div class="item">
+                <div class="title">
+                    <a href="#clear" data-action="open" class="down"> <i class="ion-android-arrow-dropdown"></i> Open</a>
+                    <a href="#clear" data-action="clear"> <i class="ion-ios-trash-outline"></i> Clear</a>
+                    <h1 class="h4">Type</h1>
+                </div>
+
+                <div class="controls">
+                  {% for category in categories %}
+                  <div class="checkbox-group" data-status="inactive">
+                      <div class="checkbox"><i class="ion-android-done"></i></div>
+                      <div class="label" data-value="Desktops">{{category.types}}</div>
+                      <input type="checkbox" name="checkbox" value="">
+                  </div>
+                  {% endfor %}
+                  
+                </div>
+            </div>
+
+            <br>
+
+            <div class="item">
+              <div class="title">
+                  <a href="#clear" data-action="open" class="down"> <i class="ion-android-arrow-dropdown"></i> Open</a>
+                  <a href="#clear" data-action="clear"> <i class="ion-ios-trash-outline"></i> Clear</a>
+                  <h1 class="h4">Screen</h1>
+              </div>
+
+              <div class="controls grid">
+                {% for ss in screensizes %}
+                <div class="checkbox-group" data-status="inactive">
+                    <div class="checkbox"><i class="ion-android-done"></i></div>
+                    <div class="label" data-value="7 in">{{ ss.size }}</div>
+                    <input type="checkbox" name="checkbox" value="">
+                </div>
+                {% endfor %}
+                
+              </div>
+          </div>
+
+            <br>
+
+            <div class="item">
+              <div class="title">
+                  <a href="#clear" data-action="open" class="down"> <i class="ion-android-arrow-dropdown"></i> Open</a>
+                  <a href="#clear" data-action="clear-price"> <i class="ion-ios-trash-outline"></i> Clear</a>
+                  <h1 class="h4">Price</h1>
+              </div>
+
+              <div class="controls">
+                  <br>
+                  <div id="slider-price"></div>
+                  <br>
+                  <p id="amount"></p>
+              </div>
+            </div>
+            <br>
+
+            <div class="item lite">
+                <div class="title">
+                    <a href="#clear" data-action="open" class="down"> <i class="ion-android-arrow-dropdown"></i> Open</a>
+                    <a href="#clear" data-action="clear"> <i class="ion-ios-trash-outline"></i> Clear</a>
+                    <h1 class="h4">Manufacturer</h1>
+                </div>
+
+                <div class="controls">
+                  {% for brand in brands %}
+                  <div class="checkbox-group" data-status="inactive">
+                      <div class="checkbox"><i class="ion-android-done"></i></div>
+                      <div class="label" data-value="Hp">{{ brand.brand}}</div>
+                      <input type="checkbox" name="checkbox" value="">
+                  </div>
+                  {% endfor %}
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- /// -->
+
+        <!-- Products -->
+        <div class="col-sm-8 col-md-9">
+          <hr class="offset-lg">
+
+          <div class="products">
+            <div class="row" id="product-list">
+              {% for product in products %}
+              <div class="col-sm-6 col-md-4 product">
+                <div class="body">
+                <a href="#" data-addcart = "{{product.id}}" class="favorites addfav" data-action="add" data-favorite="inactive"><i class="ion-ios-heart-outline"></i></a>
+                  <a href="{% url 'product:product_detail' product.id %}"><img src="{{product.main_image.url}}" alt="Apple iMac 27 Retina"/></a>
+                  <div class="content">
+                    <h1 class="h3">{{product.short_title}}</h1>
+                    {% if product.faiz == null %}
+                    <p class="price">{{product.price}}</p>
+                    {%else%}
+                    <p class="price">{{product.endirim}}</p>
+                    <p class="price through">{{product.price}}</p>
+                    {%endif%}
+                    <label>{{product.category}}</label>
+                    <button class="btn btn-link"> <i class="ion-android-open"></i> Details</button>
+                    <button data-addcart = "{{product.id}}" data-action="add" class=" addcard btn btn-primary btn-sm rounded"> <i class="ion-bag"></i> Add to cart</button>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <nav>
+            <div class="block-27">
+              <ul class="pagination">
+                  {% if page_obj.has_previous %}
+                      <li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+                  {% endif %}
+
+                  {% for page in page_obj.paginator.page_range  %}
+                      {% if page is page_obj.number  %}
+                          <li class="active"><span>{{ page }}</span></li>
+                      {% else %}
+                          <li><a href="?page={{ page }}">{{ page }}</a></li>
+                      {% endif %}
+                  {% endfor %}
+                  {% if page_obj.has_next  %}
+                      <li><a href="?page={{ next_page }}">&gt;</a></li>
+                  {% endif %}
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <!-- /// -->
+      </div>
+    </div>
+
+
+   
+
+    <hr class="offset-lg">
+    <hr class="offset-sm">
+   {% endblock %}
+
+{% block link_js %}
+
+    <script>
+      var user = '{{request.user}}'
+</script>
+
+
+{% endblock %}
